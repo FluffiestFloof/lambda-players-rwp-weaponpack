@@ -43,6 +43,7 @@ table.Merge( _LAMBDAPLAYERSWEAPONS, {
                 wepent:EmitSound( "weapons/alyx_gun/alyx_gun_fire"..random(3,4)..".wav", 65 )
                 self:HandleMuzzleFlash( 1 )
                 self:HandleShellEject( "ShellEject", Vector(), Angle( -180, 0, 0 ) )
+                bullettbl.Src = wepent:GetPos()
                 wepent:FireBullets( bullettbl )
             end)
 
@@ -50,6 +51,7 @@ table.Merge( _LAMBDAPLAYERSWEAPONS, {
                 wepent:EmitSound( "weapons/alyx_gun/alyx_gun_fire"..random(3,4)..".wav", 65 )
                 self:HandleMuzzleFlash( 1 )
                 self:HandleShellEject( "ShellEject", Vector(), Angle( -180, 0, 0 ) )
+                bullettbl.Src = wepent:GetPos()
                 wepent:FireBullets( bullettbl )
             end)
 
