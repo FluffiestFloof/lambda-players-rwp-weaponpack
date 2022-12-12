@@ -1,6 +1,13 @@
-[h1] Lambda Players - Various Weapon Pack [/h1] 
-This pack give the Lambda Players access to a bunch of weapons from various sources.
+# Lambda Players - Various Weapons Weapon Pack
+Adds a bunch of random weapons from various sources for the [Lambda Players](https://github.com/IcyStarFrost/Lambda-Players/).
 
-[code]This is purely made to be used with the Lambda Players.
-Only Lambda Players can use the weapons.
-Normal actual players can't use the weapons.[/code]
+### Weapons implemented
+Currently implements the following weapons;
+- Alyx Gun
+- Annabelle
+- Cluster Grenade
+- Anti Hacks Monitors
+- Junk Launcher
+- Lead Pipe
+- Toy Hammer
+- IsValid() Bar
