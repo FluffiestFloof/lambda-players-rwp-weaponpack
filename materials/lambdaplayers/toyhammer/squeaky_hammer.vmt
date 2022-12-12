@@ -1,0 +1,6 @@
+"VertexLitGeneric"
+{
+	"$baseTexture" "lambdaplayers\toyhammer\squeaky_hammer"
+	
+	"$envmapmask" "lambdaplayers\toyhammer\toy_specular"
+}
