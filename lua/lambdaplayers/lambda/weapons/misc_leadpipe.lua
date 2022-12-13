@@ -11,11 +11,11 @@ table.Merge( _LAMBDAPLAYERSWEAPONS, {
         keepdistance = 10,
         attackrange = 55,
 
-        damage = 10,
-        rateoffire = 0.4,
+        damage = 500,
+        rateoffire = 1,
         attackanim = ACT_HL2MP_GESTURE_RANGE_ATTACK_MELEE,
         attacksnd = "Weapon_Crowbar.Single",
-        hitsnd = "Weapon_Crowbar.Melee_Hit",
+        hitsnd = "lambdaplayers/loudpipe/lead_pipe_ear_rape.wav",
 
         islethal = true,
     }
