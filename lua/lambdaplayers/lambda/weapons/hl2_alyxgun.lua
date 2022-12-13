@@ -1,6 +1,27 @@
 local random = math.random
 local CurTime = CurTime
-local bullettbl = {}
+local bullettbl = {
+    Force = 3,
+    HullSize = 5,
+    Num = 1,
+    TracerName = "Tracer",
+    Spread = Vector( 0.16, 0.16, 0 )
+}
+
+local function ShootGun( lambda, wepent, target )
+    bullettbl.Attacker = lambda
+    bullettbl.Damage = random( 3, 5 )
+    bullettbl.Dir = ( target:WorldSpaceCenter() - wepent:GetPos() ):GetNormalized()
+    bullettbl.Src = wepent:GetPos()
+    bullettbl.IgnoreEntity = lambda
+
+    wepent:EmitSound( "weapons/alyx_gun/alyx_gun_fire"..random(3,4)..".wav", 75, 100, 1, CHAN_WEAPON )
+    lambda:HandleMuzzleFlash( 1 )
+    lambda:HandleShellEject( "ShellEject", Vector(), Angle( -180, 0, 0 ) )
+    wepent:FireBullets( bullettbl )
+    
+    lambda.l_Clip = lambda.l_Clip - 1
+end
 
 table.Merge( _LAMBDAPLAYERSWEAPONS, {
 
@@ -26,46 +47,20 @@ table.Merge( _LAMBDAPLAYERSWEAPONS, {
         callback = function( self, wepent, target )
             if self.l_Clip <= 0 then self:ReloadWeapon() return end
             
-            bullettbl.Attacker = self
-            bullettbl.Damage = random( 3, 5 )
-            bullettbl.Force = 3
-            bullettbl.HullSize = 5
-            bullettbl.Num = 1
-            bullettbl.TracerName = "Tracer"
-            bullettbl.Dir = ( target:WorldSpaceCenter() - wepent:GetPos() ):GetNormalized()
-            bullettbl.Src = wepent:GetPos()
-            bullettbl.Spread = Vector( 0.16, 0.16, 0 )
-            bullettbl.IgnoreEntity = self
-            
             self.l_WeaponUseCooldown = CurTime() + 0.5
 
+            ShootGun( self, wepent, target )
+
             self:SimpleTimer(0.06, function()
-                wepent:EmitSound( "weapons/alyx_gun/alyx_gun_fire"..random(3,4)..".wav", 65 )
-                self:HandleMuzzleFlash( 1 )
-                self:HandleShellEject( "ShellEject", Vector(), Angle( -180, 0, 0 ) )
-                bullettbl.Src = wepent:GetPos()
-                wepent:FireBullets( bullettbl )
+                ShootGun( self, wepent, target )
             end)
 
             self:SimpleTimer(0.12, function()
-                wepent:EmitSound( "weapons/alyx_gun/alyx_gun_fire"..random(3,4)..".wav", 65 )
-                self:HandleMuzzleFlash( 1 )
-                self:HandleShellEject( "ShellEject", Vector(), Angle( -180, 0, 0 ) )
-                bullettbl.Src = wepent:GetPos()
-                wepent:FireBullets( bullettbl )
+                ShootGun( self, wepent, target )
             end)
-
-            self.l_Clip = self.l_Clip - 3
-
-            wepent:EmitSound( "Weapon_Alyx_Gun.Single" )
 
             self:RemoveGesture( ACT_HL2MP_GESTURE_RANGE_ATTACK_PISTOL )
             self:AddGesture( ACT_HL2MP_GESTURE_RANGE_ATTACK_PISTOL )
-            
-            self:HandleMuzzleFlash( 1 )
-            self:HandleShellEject( "ShellEject", Vector(), Angle( -180, 0, 0 ) )
-
-            wepent:FireBullets( bullettbl )
 
             return true
         end,
