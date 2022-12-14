@@ -16,7 +16,7 @@ table.Merge( _LAMBDAPLAYERSWEAPONS, {
         attackrange = 50,
 
         OnEquip = function( lambda, wepent )
-            wepent:EmitSound( "vo/gman_misc/gman_04.wav", 60 )
+            wepent:EmitSound( "vo/gman_misc/gman_04.wav", 55 )
         end,
 
         callback = function( self, wepent, target )
@@ -39,7 +39,7 @@ table.Merge( _LAMBDAPLAYERSWEAPONS, {
                 dmginfo:SetDamageForce( ( target:WorldSpaceCenter() - self:WorldSpaceCenter() ):GetNormalized() * dmg )
                 target:TakeDamageInfo( dmginfo )
                 
-                wepent:EmitSound( "physics/wood/wood_box_impact_hard"..random( 4, 6 )..".wav", 75 )
+                wepent:EmitSound( "physics/wood/wood_box_impact_hard"..random( 4, 6 )..".wav", 75, 100, 1, CHAN_WEAPON )
             end)
 
             return true
