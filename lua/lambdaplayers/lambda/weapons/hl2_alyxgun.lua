@@ -1,6 +1,6 @@
 local random = math.random
 local CurTime = CurTime
-local bullettbl = {
+local bulletInfo = {
     Force = 3,
     HullSize = 5,
     Num = 1,
@@ -9,16 +9,16 @@ local bullettbl = {
 }
 
 local function ShootGun( lambda, wepent, target )
-    bullettbl.Attacker = lambda
-    bullettbl.Damage = random( 3, 5 )
-    bullettbl.Dir = ( target:WorldSpaceCenter() - wepent:GetPos() ):GetNormalized()
-    bullettbl.Src = wepent:GetPos()
-    bullettbl.IgnoreEntity = lambda
+    bulletInfo.Attacker = lambda
+    bulletInfo.Damage = random( 3, 5 )
+    bulletInfo.Dir = ( target:WorldSpaceCenter() - wepent:GetPos() ):GetNormalized()
+    bulletInfo.Src = wepent:GetPos()
+    bulletInfo.IgnoreEntity = lambda
 
     wepent:EmitSound( "weapons/alyx_gun/alyx_gun_fire"..random(3,4)..".wav", 75, 100, 1, CHAN_WEAPON )
     lambda:HandleMuzzleFlash( 1 )
     lambda:HandleShellEject( "ShellEject", Vector(), Angle( -180, 0, 0 ) )
-    wepent:FireBullets( bullettbl )
+    wepent:FireBullets( bulletInfo )
     
     lambda.l_Clip = lambda.l_Clip - 1
 end
