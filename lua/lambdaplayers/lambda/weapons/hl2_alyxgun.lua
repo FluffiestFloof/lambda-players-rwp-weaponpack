@@ -11,7 +11,6 @@ local bulletInfo = {
 local function ShootGun( lambda, wepent, target )
     bulletInfo.Attacker = lambda
     bulletInfo.Damage = random( 3, 5 )
-    bulletInfo.Dir = ( target:WorldSpaceCenter() - wepent:GetPos() ):GetNormalized()
     bulletInfo.Src = wepent:GetPos()
     bulletInfo.IgnoreEntity = lambda
 
@@ -48,6 +47,8 @@ table.Merge( _LAMBDAPLAYERSWEAPONS, {
             if self.l_Clip <= 0 then self:ReloadWeapon() return end
             
             self.l_WeaponUseCooldown = CurTime() + 0.5
+
+            bulletInfo.Dir = ( target:WorldSpaceCenter() - wepent:GetPos() ):GetNormalized()
 
             ShootGun( self, wepent, target )
 
