@@ -2,7 +2,6 @@ local IsValid = IsValid
 local CurTime = CurTime
 local ents_Create = ents.Create
 local random = math.random
-local Rand = math.Rand
 
 table.Merge( _LAMBDAPLAYERSWEAPONS, {
 
@@ -45,8 +44,8 @@ table.Merge( _LAMBDAPLAYERSWEAPONS, {
                 }
                 
                 local vecThrow = ( target:WorldSpaceCenter() - self:EyePos() ):Angle()
-                local ent = ents.Create("prop_physics")
-                ent:SetModel( mdls[math.random(#mdls)] )
+                local ent = ents_Create("prop_physics")
+                ent:SetModel( mdls[random(#mdls)] )
                 ent:SetPos( self:EyePos() + vecThrow:Forward() * 32 + vecThrow:Up() * 16 )
                 ent:SetAngles( vecThrow )
                 ent:SetOwner( self )
