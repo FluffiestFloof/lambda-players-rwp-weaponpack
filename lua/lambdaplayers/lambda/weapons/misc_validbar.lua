@@ -25,7 +25,7 @@ table.Merge( _LAMBDAPLAYERSWEAPONS, {
                 self:SetLayerPlaybackRate( self:AddGesture( ACT_GMOD_GESTURE_MELEE_SHOVE_2HAND ), 0.6 )
                 
                 self:SimpleTimer( 0.8, function()
-                    if self:GetRangeSquaredTo(target) > ( 70 * 70 ) then return end
+                    if !self:IsInRange( target, 70 ) then return end
 
                     -- Simulate deleting the entity by preventing ragdoll
                     if target:IsPlayer() then
@@ -64,7 +64,7 @@ table.Merge( _LAMBDAPLAYERSWEAPONS, {
                 self:AddGesture( ACT_HL2MP_GESTURE_RANGE_ATTACK_MELEE2 )
                 
                 self:SimpleTimer( 0.25, function()
-                    if self:GetRangeSquaredTo(target) > ( 70 * 70 ) then return end
+                    if !self:IsInRange( target, 70 ) then return end
                     
                     local dmg = DamageInfo()
                     dmg:SetDamage( 7 )
