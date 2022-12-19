@@ -8,7 +8,7 @@ local bulletInfo = {
     Spread = Vector( 0.16, 0.16, 0 )
 }
 
-local function ShootGun( lambda, wepent, target )
+local function ShootGun( lambda, wepent )
     bulletInfo.Attacker = lambda
     bulletInfo.Damage = random( 3, 5 )
     bulletInfo.Src = wepent:GetPos()
@@ -50,14 +50,14 @@ table.Merge( _LAMBDAPLAYERSWEAPONS, {
 
             bulletInfo.Dir = ( target:WorldSpaceCenter() - wepent:GetPos() ):GetNormalized()
 
-            ShootGun( self, wepent, target )
+            ShootGun( self, wepent )
 
             self:SimpleTimer(0.06, function()
-                ShootGun( self, wepent, target )
+                ShootGun( self, wepent )
             end)
 
             self:SimpleTimer(0.12, function()
-                ShootGun( self, wepent, target )
+                ShootGun( self, wepent )
             end)
 
             self:RemoveGesture( ACT_HL2MP_GESTURE_RANGE_ATTACK_PISTOL )
