@@ -63,7 +63,7 @@ table.Merge( _LAMBDAPLAYERSWEAPONS, {
                         local propDmg = DamageInfo()
                         propDmg:SetDamage( dmg )
                         propDmg:SetInflictor( IsValid( wepent ) and wepent or ent )
-                        propDmg:SetAttacker( self )
+                        propDmg:SetAttacker( IsValid( self ) and self or ent )
                         propDmg:SetDamageType( DMG_CRUSH )
                         data.HitEntity:TakeDamageInfo( propDmg )
                     end

@@ -42,7 +42,7 @@ table.Merge( _LAMBDAPLAYERSWEAPONS, {
                     local propDmg = DamageInfo()
                     propDmg:SetDamage( dmg )
                     propDmg:SetInflictor( IsValid( wepent ) and wepent or ent )
-                    propDmg:SetAttacker( self )
+                    propDmg:SetAttacker( IsValid( self ) and self or ent )
                     propDmg:SetDamageType( DMG_CRUSH )
                     data.HitEntity:TakeDamageInfo( propDmg )
                     ent:EmitSound('physics/metal/metal_box_break'..math.random( 2 )..'.wav', 70, math.random( 90, 110 ))
