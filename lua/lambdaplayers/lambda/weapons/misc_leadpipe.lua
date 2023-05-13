@@ -15,7 +15,7 @@ table.Merge( _LAMBDAPLAYERSWEAPONS, {
         rateoffire = 1,
         attackanim = ACT_HL2MP_GESTURE_RANGE_ATTACK_MELEE,
         attacksnd = "Weapon_Crowbar.Single",
-        hitsnd = "lambdaplayers/loudpipe/lead_pipe_ear_rape.wav",
+        hitsnd = "lambdaplayers/weapons/loudpipe/lead_pipe_ear_rape.wav",
 
         islethal = true,
     }
